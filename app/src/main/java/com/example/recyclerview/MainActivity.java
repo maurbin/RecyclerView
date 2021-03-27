@@ -38,8 +38,11 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                int wordListSize = mWordList.size();
+                mWordList.addLast("+ Word " + wordListSize);
+                mRecyclerView.getAdapter().notifyItemInserted(wordListSize);
+                mRecyclerView.smoothScrollToPosition(wordListSize);
+
             }
         });
         for (int i = 0; i < 20; i++) {
